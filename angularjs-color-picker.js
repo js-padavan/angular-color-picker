@@ -4,7 +4,7 @@
  *
  * Copyright 2015 ruhley
  *
- * 2015-08-03 08:20:09
+ * 2015-08-17 14:19:11
  *
  */
 if (typeof module !== "undefined" && typeof exports !== "undefined" && module.exports === exports){
@@ -33,7 +33,8 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                 colorPickerSwatch: '=',
                 colorPickerSwatchOnly: '=',
                 colorPickerSwatchPos: '=',
-                colorPickerSwatchBootstrap: '='
+                colorPickerSwatchBootstrap: '=',
+                colorPickerActivated: '='
             },
             templateUrl: 'template/color-picker/directive.html',
             link: function ($scope, element, attrs, control) {
@@ -209,6 +210,12 @@ if (typeof module !== "undefined" && typeof exports !== "undefined" && module.ex
                         }
                     }
                 );
+
+                $scope.$watch('colorPickerActivated', function(newValue, oldValue) {
+                  if (newValue) {
+                    $scope.show();
+                  }
+                });
 
                 //---------------------------
                 // HUE
